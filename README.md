@@ -8,8 +8,9 @@ V2 of the Kitchen Lighting controller is still at the experimental stage, howeve
 3)  The ESP8266 boards I have been using will not be happy with the 12v due to their lightweight regulators, and I really do not want to put a buck converter behind the switch plate - partly due to the space etc.  If I am fabricating a new board then that is less of an issue, but currently is a concern
 4)  Should I leave the existing face plates in place but change them from DMX to i2c along the current wiring to the ESP8266 board which is located in a more sensible position, and it can receive the switch positions from the facia from a more WiFi friendly position, and then it can communicate with SmarthThings and speak DMX to the lighting units.  I feel sure that i2c might not be up to (or reliable) due to the distance, but it is something to be considered.
 5)  ST-Anything seems to be a good project to begin customising to control the lighting controller, but for some reason, I am a little uncomforable with the Parent / Child device handler arrangement being used.  In my mind I was hoping for a more feature rich single SmartThings device, but maybe that would cause problems.  This is likely to become clearer once I build some momentum.
-I would like to introduce a lux sensor into the controller
-I would like to incorporate a presence sensor into the kitched also.
+6)  The 75176 used for the DMX transmission is a 5v part and the ESP8266 is 3v3.
+7)  I would like to introduce a lux sensor into the controller
+8)  I would like to incorporate a presence sensor into the kitched also.
 
 DMX devices:
  These are the DMX devices controlled by this program:
