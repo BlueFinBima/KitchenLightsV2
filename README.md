@@ -10,3 +10,9 @@ V2 of the Kitchen Lighting controller is still at the experimental stage, howeve
 5)  ST-Anything seems to be a good project to begin customising to control the lighting controller, but for some reason, I am a little uncomforable with the Parent / Child device handler arrangement being used.  In my mind I was hoping for a more feature rich single SmartThings device, but maybe that would cause problems.  This is likely to become clearer once I build some momentum.
 I would like to introduce a lux sensor into the controller
 I would like to incorporate a presence sensor into the kitched also.
+
+DMX devices:
+ These are the DMX devices controlled by this program:
+ 1)  NJD DPX12/4 Channel Mains lighting Dimmer (This now needs to be set to F9 as no GU10's are dimmable due to bulb failure rate).
+ 2)  CT305R LED Dimmer
+ 3)  3Ch Relay box  - This is a late addition to fix a problem with the CF GU10's which failed very easily and even when the DPX12 simply acted as a switch, this caused the replacement LED GU10s to flash.  While the code for this device is in this program, it is not currently used. (Obsolete - this DMX devioce was removed when better dimmable LED GU10's were brought in and could be controlled by the NJD DPX12/4 without flickering or expiring quickly).
