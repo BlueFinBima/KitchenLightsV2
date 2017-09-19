@@ -35,6 +35,28 @@
 //******************************************************************************************
 #include <ESPDMX.h>
 DMXESPSerial dmx;  // instantiate the DMX sender on TXD1 / GPIO2 / D4 
+#include <SPI.h>
+
+#include <SmartThingsESP8266WiFi.h>
+
+//******************************************************************************************
+//ESP8266 WiFi Information
+//******************************************************************************************
+#include "KitchenLightsV2private.h"    // this holds my personal wifi info so if this appears in your source then just delete it
+#ifndef _KitchenLightsV2private_h_
+#define _KitchenLightsV2private_h_
+String str_ssid = "Your SSID";								//  <---You must edit this line!
+String str_password = "Your WiFi Password";					//  <---You must edit this line!
+IPAddress ip(192, 168, 1, 32);          //Device IP Address //  <---You must edit this line!
+IPAddress gateway(192, 168, 1, 254);    //Router gateway	//  <---You must edit this line!
+IPAddress subnet(255, 255, 255, 0);     //LAN subnet mask   //  <---You must edit this line!
+IPAddress dnsserver(192, 168, 1, 254);  //DNS server        //  <---You must edit this line!
+const unsigned int serverPort = 8090; // port to run the http server on
+									  // Smartthings Hub Information
+IPAddress hubIp(192, 168, 1, 186);    // smartthings hub ip     //  <---You must edit this line!
+const unsigned int hubPort = 39500;   // smartthings hub port
+#endif
+
 
 #define MAXDMXCHANNELS 21        // this is to help performance
 #define MAXDMXCIRCUITS 19        // this is the number of active circuits in the lighting plan plus 4 for the leds in the switches which are not DMX
@@ -173,10 +195,6 @@ int lighting[MAXDMXCIRCUITS][MAXDMXTHEMES] = {
 	{ FloodRelay2,                0,    0,    0,    0,c_OFF,   c_OFF,c_OFF,c_OFF,   c_OFF,c_OFF,   c_OFF,c_OFF,c_OFF }
 };
 
-#include <SPI.h>
-
-#include <SmartThingsESP8266WiFi.h>
-
 				   //******************************************************************************************
 				   // ST_Anything Library 
 				   //******************************************************************************************
@@ -233,23 +251,6 @@ int lighting[MAXDMXCIRCUITS][MAXDMXTHEMES] = {
 #define PIN_TEMPERATURE_1         D7  //SmartThings Capabilty "Temperature Measurement" (Dallas Semiconductor DS18B20)
 #define PIN_TIMEDRELAY_1          D8  //SmartThings Capability "Relay Switch"
 
-				   //******************************************************************************************
-				   //ESP8266 WiFi Information
-				   //******************************************************************************************
-#include "KitchenLightsV2private.h"    // this holds my personal wifi info so if this appears in your source then just delete it
-#ifndef _KitchenLightsV2private_h_
-#define _KitchenLightsV2private_h_
-String str_ssid = "Your SSID";								//  <---You must edit this line!
-String str_password = "Your WiFi Password";					//  <---You must edit this line!
-IPAddress ip(192, 168, 1, 32);          //Device IP Address //  <---You must edit this line!
-IPAddress gateway(192, 168, 1, 254);    //Router gateway	//  <---You must edit this line!
-IPAddress subnet(255, 255, 255, 0);     //LAN subnet mask   //  <---You must edit this line!
-IPAddress dnsserver(192, 168, 1, 254);  //DNS server        //  <---You must edit this line!
-const unsigned int serverPort = 8090; // port to run the http server on
-									  // Smartthings Hub Information
-IPAddress hubIp(192, 168, 1, 186);    // smartthings hub ip     //  <---You must edit this line!
-const unsigned int hubPort = 39500;   // smartthings hub port
-#endif
 									  //******************************************************************************************
 									  //st::Everything::callOnMsgSend() optional callback routine.  This is a sniffer to monitor 
 									  //    data being sent to ST.  This allows a user to act on data changes locally within the 
